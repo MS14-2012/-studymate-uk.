@@ -1161,3 +1161,410 @@ setInterval(checkReminders,30000);
 </body>
 </html>
 ```
+<meta charset="UTF\-8"\>
+<meta name="viewport"
+      content="width=device\-width, initial\-scale=1\.0"\>
+<meta name="theme\-color" content="\#111827"\>
+<title\>StudyMate Premium</title\>
+<style\>
+\* \{
+    box\-sizing: border\-box;
+    margin: 0;
+    padding: 0;
+\}
+body \{
+    font\-family: \-apple\-system, BlinkMacSystemFont, "Segoe UI",
+                 Roboto, Arial, sans\-serif;
+    background: \#f5f7fb;
+    color: \#111827;
+\}
+\.app \{
+    max\-width: 480px;
+    min\-height: 100vh;
+    margin: auto;
+    background: \#f5f7fb;
+\}
+/\* HEADER \*/
+\.header \{
+    background: \#111827;
+    color: white;
+    padding: 22px 20px 30px;
+    border\-radius: 0 0 28px 28px;
+\}
+\.back \{
+    border: none;
+    background: rgba\(255,255,255,0\.12\);
+    color: white;
+    width: 42px;
+    height: 42px;
+    border\-radius: 50%;
+    font\-size: 20px;
+    cursor: pointer;
+\}
+\.logo \{
+    margin\-top: 24px;
+    font\-size: 30px;
+    font\-weight: 800;
+\}
+\.subtitle \{
+    margin\-top: 8px;
+    color: \#cbd5e1;
+    font\-size: 15px;
+\}
+/\* PREMIUM CARD \*/
+\.premium\-card \{
+    margin: \-18px 18px 20px;
+    background: linear\-gradient\(135deg, \#fff7d6, \#ffffff\);
+    border\-radius: 24px;
+    padding: 22px;
+    box\-shadow: 0 12px 35px rgba\(17,24,39,0\.12\);
+    border: 1px solid \#f3e8b0;
+\}
+\.badge \{
+    display: inline\-block;
+    background: \#111827;
+    color: \#ffd84d;
+    padding: 7px 12px;
+    border\-radius: 20px;
+    font\-size: 13px;
+    font\-weight: 700;
+\}
+\.premium\-title \{
+    margin\-top: 14px;
+    font\-size: 27px;
+    font\-weight: 800;
+\}
+\.premium\-description \{
+    margin\-top: 7px;
+    color: \#6b7280;
+    line\-height: 1\.5;
+\}
+/\* FEATURES \*/
+\.section \{
+    padding: 0 18px;
+\}
+\.section\-title \{
+    font\-size: 19px;
+    font\-weight: 800;
+    margin\-bottom: 12px;
+\}
+\.feature \{
+    display: flex;
+    align\-items: center;
+    background: white;
+    padding: 15px;
+    margin\-bottom: 10px;
+    border\-radius: 16px;
+    box\-shadow: 0 4px 15px rgba\(17,24,39,0\.05\);
+\}
+\.icon \{
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align\-items: center;
+    justify\-content: center;
+    background: \#f1f5f9;
+    border\-radius: 13px;
+    font\-size: 21px;
+\}
+\.feature\-text \{
+    margin\-left: 13px;
+\}
+\.feature\-title \{
+    font\-weight: 700;
+\}
+\.feature\-description \{
+    color: \#6b7280;
+    font\-size: 13px;
+    margin\-top: 3px;
+\}
+/\* PRICING \*/
+\.pricing \{
+    padding: 20px 18px;
+\}
+\.plan \{
+    background: white;
+    border: 2px solid transparent;
+    border\-radius: 20px;
+    padding: 18px;
+    margin\-bottom: 12px;
+    cursor: pointer;
+    transition: 0\.2s;
+\}
+\.plan\.selected \{
+    border\-color: \#111827;
+    box\-shadow: 0 7px 20px rgba\(17,24,39,0\.10\);
+\}
+\.plan\-header \{
+    display: flex;
+    justify\-content: space\-between;
+    align\-items: center;
+\}
+\.plan\-name \{
+    font\-weight: 800;
+    font\-size: 17px;
+\}
+\.price \{
+    font\-size: 22px;
+    font\-weight: 800;
+\}
+\.period \{
+    color: \#6b7280;
+    font\-size: 13px;
+\}
+\.save \{
+    display: inline\-block;
+    margin\-top: 7px;
+    background: \#dcfce7;
+    color: \#166534;
+    padding: 5px 9px;
+    border\-radius: 10px;
+    font\-size: 12px;
+    font\-weight: 700;
+\}
+/\* BUTTON \*/
+\.subscribe \{
+    margin: 5px 18px 12px;
+    width: calc\(100% \- 36px\);
+    border: none;
+    border\-radius: 16px;
+    padding: 17px;
+    background: \#111827;
+    color: white;
+    font\-size: 17px;
+    font\-weight: 800;
+    cursor: pointer;
+\}
+\.subscribe:active \{
+    transform: scale\(0\.98\);
+\}
+\.restore \{
+    display: block;
+    margin: 0 auto;
+    border: none;
+    background: transparent;
+    color: \#4b5563;
+    font\-size: 14px;
+    padding: 10px;
+    cursor: pointer;
+\}
+/\* FOOTER \*/
+\.footer \{
+    text\-align: center;
+    color: \#9ca3af;
+    font\-size: 12px;
+    padding: 20px;
+    line\-height: 1\.5;
+\}
+</style\>
+</head\>
+<body\>
+<div class="app"\>
+    <\!\-\- HEADER \-\-\>
+    <header class="header"\>
+        <button class="back" onclick="goBack\(\)"\>
+            ←
+        </button\>
+        <div class="logo"\>
+            StudyMate ⭐
+        </div\>
+        <div class="subtitle"\>
+            Unlock your full study potential
+        </div\>
+    </header\>
+    <\!\-\- PREMIUM INTRO \-\-\>
+    <section class="premium\-card"\>
+        <span class="badge"\>
+            ⭐ PREMIUM
+        </span\>
+        <h1 class="premium\-title"\>
+            Study smarter\.
+        </h1\>
+        <p class="premium\-description"\>
+            Get access to all StudyMate features
+            and take your studying to the next level\.
+        </p\>
+    </section\>
+    <\!\-\- FEATURES \-\-\>
+    <section class="section"\>
+        <h2 class="section\-title"\>
+            What's included
+        </h2\>
+        <div class="feature"\>
+            <div class="icon"\>📚</div\>
+            <div class="feature\-text"\>
+                <div class="feature\-title"\>
+                    Unlimited Subjects
+                </div\>
+                <div class="feature\-description"\>
+                    Add as many subjects as you need\.
+                </div\>
+            </div\>
+        </div\>
+        <div class="feature"\>
+            <div class="icon"\>📝</div\>
+            <div class="feature\-text"\>
+                <div class="feature\-title"\>
+                    Unlimited Homework
+                </div\>
+                <div class="feature\-description"\>
+                    Keep all your assignments organised\.
+                </div\>
+            </div\>
+        </div\>
+        <div class="feature"\>
+            <div class="icon"\>⏱️</div\>
+            <div class="feature\-text"\>
+                <div class="feature\-title"\>
+                    Advanced Focus Timer
+                </div\>
+                <div class="feature\-description"\>
+                    More options for focused study sessions\.
+                </div\>
+            </div\>
+        </div\>
+        <div class="feature"\>
+            <div class="icon"\>📊</div\>
+            <div class="feature\-text"\>
+                <div class="feature\-title"\>
+                    Detailed Progress
+                </div\>
+                <div class="feature\-description"\>
+                    Understand your study progress\.
+                </div\>
+            </div\>
+        </div\>
+        <div class="feature"\>
+            <div class="icon"\>☁️</div\>
+            <div class="feature\-text"\>
+                <div class="feature\-title"\>
+                    Cloud Sync
+                </div\>
+                <div class="feature\-description"\>
+                    Keep your data synced across devices\.
+                </div\>
+            </div\>
+        </div\>
+        <div class="feature"\>
+            <div class="icon"\>🎨</div\>
+            <div class="feature\-text"\>
+                <div class="feature\-title"\>
+                    Premium Themes
+                </div\>
+                <div class="feature\-description"\>
+                    Unlock additional StudyMate themes\.
+                </div\>
+            </div\>
+        </div\>
+    </section\>
+    <\!\-\- PRICING \-\-\>
+    <section class="pricing"\>
+        <h2 class="section\-title"\>
+            Choose your plan
+        </h2\>
+        <div class="plan selected"
+             onclick="selectPlan\('monthly'\)"
+             id="monthly"\>
+            <div class="plan\-header"\>
+                <div\>
+                    <div class="plan\-name"\>
+                        Monthly
+                    </div\>
+                    <div class="period"\>
+                        Cancel anytime
+                    </div\>
+                </div\>
+                <div\>
+                    <span class="price"\>
+                        £2\.99
+                    </span\>
+                    <span class="period"\>
+                        /month
+                    </span\>
+                </div\>
+            </div\>
+        </div\>
+        <div class="plan"
+             onclick="selectPlan\('yearly'\)"
+             id="yearly"\>
+            <div class="plan\-header"\>
+                <div\>
+                    <div class="plan\-name"\>
+                        Yearly
+                    </div\>
+                    <span class="save"\>
+                        SAVE \~30%
+                    </span\>
+                </div\>
+                <div\>
+                    <span class="price"\>
+                        £24\.99
+                    </span\>
+                    <span class="period"\>
+                        /year
+                    </span\>
+                </div\>
+            </div\>
+        </div\>
+    </section\>
+    <\!\-\- SUBSCRIBE \-\-\>
+    <button class="subscribe"
+            onclick="startPremium\(\)"\>
+        Continue with Premium
+    </button\>
+    <button class="restore"
+            onclick="restorePurchase\(\)"\>
+        Restore Purchase
+    </button\>
+    <\!\-\- FOOTER \-\-\>
+    <footer class="footer"\>
+        Secure payment through the official app store\.<br\>
+        Subscription renews automatically unless cancelled
+        before the renewal date\.
+    </footer\>
+</div\>
+<script\>
+let selectedPlan = "monthly";
+function selectPlan\(plan\) \{
+    selectedPlan = plan;
+    document
+        \.getElementById\("monthly"\)
+        \.classList\.remove\("selected"\);
+    document
+        \.getElementById\("yearly"\)
+        \.classList\.remove\("selected"\);
+    document
+        \.getElementById\(plan\)
+        \.classList\.add\("selected"\);
+\}
+function startPremium\(\) \{
+    /\*
+       IMPORTANT:
+       This is only the UI\.
+       Later this function will connect to:
+       Apple StoreKit
+       Google Play Billing
+       depending on the platform\.
+    \*/
+    if \(selectedPlan === "monthly"\) \{
+        alert\(
+            "Monthly Premium selected \(£2\.99/month\)\."
+        \);
+    \} else \{
+        alert\(
+            "Yearly Premium selected \(£24\.99/year\)\."
+        \);
+    \}
+\}
+function restorePurchase\(\) \{
+    alert\(
+        "Restore Purchase will be connected to the App Store / Google Play\."
+    \);
+\}
+function goBack\(\) \{
+    window\.history\.back\(\);
+\}
+</script\>
+</body\>
+</html\>
+\`\`\`
